@@ -70,3 +70,52 @@ function generateSymbol() {
 }
 console.log(generateSymbol());
 
+//setting color according to password strength
+function calcStrength() {
+    let hasUpper = false;
+    let hasLower = false;
+    let hasNum = false;
+    let hasSym = false;
+
+    if (uppercaseCheck.checked) hasUpper = true;
+    if (lowercaseCheck.checked) hasLower = true;
+    if (numbersCheck.checked) hasNum = true;
+    if (symbolsCheck.checked) hasSym = true;
+
+    if (hasUpper && hasLower && hasNum && password.length >= 8) {
+        setIndicator("#0f0");
+    }
+    else if (
+        (hasLower || hasUpper) &&
+        (hasNum || hasSym) &&
+        passwordLength >= 6
+    ) {
+        setIndicator("#ff0");
+    }
+    else {
+        setIndicator("#00f");
+    }
+}
+
+async function copyContent() {
+    try {
+        await navigator.clipboard.writeText(passwordDisplay.value);
+        copyMsg.innerText = "Copied";
+    }
+    catch {
+        copyMsg.innerText = "Failed";
+    }
+    copyMsg.classList.add('active');
+
+    setTimeout(() => {
+        copyMsg.classList.remove("active");
+    }, 2000);
+}
+
+//event listeners
+
+inputSlider.addEventListener('input', (e) => {
+    passwordLength = e.target.value;
+    handleSlider();
+})
+
