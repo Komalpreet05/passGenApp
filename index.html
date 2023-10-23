@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div class="container">
+        <div>
+          <h2>Password Generator</h2>
+        </div>
+        <div class="display-container">
+          <input
+            readonly
+            placeholder="Password"
+            class="display"
+            data-passwowrdDisplay
+          />
+          <button class="copyBtn" data-copy>
+            <span data-copyMsg></span>
+            <img src="./images/copy.svg" alt="copybtn" width="23" height="23" />
+          </button>
+          <!--custom attribute data-passwordDisplay-->
+        </div>
+
+        <div class="input-container">
+          <div class="length-container">
+            <p>Password Length</p>
+            <p data-lengthNumber>0</p>
+          </div>
+          <div class="slider-container">
+            <input type="range" min="1" max="20" class="slider" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
