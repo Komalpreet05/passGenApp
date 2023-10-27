@@ -15,15 +15,20 @@ const symbols = "!@#$%^&*()_-+=[]{}|;:,.<>?";
 //initial initialisation we can apply 
 let password = "";
 let passwordLength = 10;
-let checkCount = 1;
+let checkCount = 0;
 handleSlider();
 //setting strength color to gray
 
 //set pass length
 function handleSlider() {
     inputSlider.value = passwordLength;
-    lengthDisplay.textContent = passwordLength; //my own setup
+    lengthDisplay.textContent = passwordLength; //my own setup instead of innertext
     //h.w.
+
+    //figure out later
+    // inputSlider.addEventListener('input', (e) => {
+    //     lengthDisplay.textContent = inputSlider.value;
+    // })
 }
 
 //setting strength color
@@ -118,4 +123,115 @@ inputSlider.addEventListener('input', (e) => {
     passwordLength = e.target.value;
     handleSlider();
 })
+
+//event listener for copy
+
+copyBtn.addEventListener('click', () => {
+    if (passwordDisplay.value) {
+        copyContent();
+    }
+})
+
+function handleCheckBoxChange() {
+    checkCount = 0;
+    allCheckBox.forEach((checkBox) => {
+        if (checkBox.checked) {
+            checkCount++;
+        }
+    })
+    console.log(checkCount);
+
+    //special condition
+    if (passwordLength < checkCount) {
+        passwordLength = checkCount;
+        handleSlider();
+    }
+}
+
+allCheckBox.forEach((checkBox) => {
+    checkBox.addEventListener('change', handleCheckBoxChange);
+})
+
+
+//shuffling password using fisher yates method
+function shufflePassword(array) {
+    //fisher yates method
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    let str = "";
+    array.forEach((el) => str += el);
+    return str;
+}
+//generate btn
+
+generateBtn.addEventListener('click', () => {
+    //none checkboxes selected
+    if (checkCount <= 0) {
+        return;
+    }
+    if (passwordLength < checkCount) {
+        passwordLength = checkCount;
+        handleSlider();
+    }
+
+    //getting new pass
+
+    //remove old pass
+    password = "";
+
+    // if (uppercaseCheck.checked) {
+    //     password += generateUpperCase();
+    // }
+    // if (lowercaseCheck.checked) {
+    //     password += generateLowerCase();
+    // }
+    // if (numbersCheck.checked) {
+    //     password += generateRandomNumber();
+    // }
+    // if (symbolsCheck.checked) {
+    //     password += generateSymbol();
+    // }
+    // console.log(password);
+
+    let funcArr = [];
+    if (uppercaseCheck.checked) {
+        funcArr.push(generateUpperCase);
+    }
+    if (lowercaseCheck.checked) {
+        funcArr.push(generateLowerCase);
+    }
+    if (symbolsCheck.checked) {
+        funcArr.push(generateSymbol);
+    }
+
+    if (numbersCheck.checked) {
+        funcArr.push(generateRandomNumber);
+    }
+
+    //compulsary addition
+    for (let i = 0; i < funcArr.length; i++) {
+        password += funcArr[i]();
+    }
+    //remaining addition
+    for (let i = 0; i < passwordLength - funcArr.length; i++) {
+        let randIndex = getRndInt(0, funcArr.length);
+        password += funcArr[randIndex]();
+    }
+    console.log(password);
+
+    //shuffling the password
+    password = shufflePassword(Array.from(password));
+
+    //show in input
+    passwordDisplay.value = password;
+    calcStrength();
+
+})
+
+
+
 
