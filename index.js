@@ -171,6 +171,9 @@ function shufflePassword(array) {
 generateBtn.addEventListener('click', () => {
     //none checkboxes selected
     if (checkCount <= 0) {
+        password = "";
+        passwordDisplay.value = password;
+        console.log("no result");
         return;
     }
     if (passwordLength < checkCount) {
@@ -222,9 +225,12 @@ generateBtn.addEventListener('click', () => {
         password += funcArr[randIndex]();
     }
     console.log(password);
+    console.log(password.split(""));
 
     //shuffling the password
-    password = shufflePassword(Array.from(password));
+    password = shufflePassword(password.split(""));
+    //or
+    //password = shufflePassword(Array.from(password));[]
 
     //show in input
     passwordDisplay.value = password;
