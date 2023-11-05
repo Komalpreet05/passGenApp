@@ -15,14 +15,18 @@ const symbols = "!@#$%^&*()_-+=[]{}|;:,.<>?";
 //initial initialisation we can apply 
 let password = "";
 let passwordLength = 10;
-let checkCount = 0;
+let checkCount = 1;
+uppercaseCheck.checked = true;
+setIndicator("#ccc");
 handleSlider();
+
 //setting strength color to gray
 
 //set pass length
+console.log(allCheckBox[1].checked);
 function handleSlider() {
     inputSlider.value = passwordLength;
-    lengthDisplay.textContent = passwordLength; //my own setup instead of innertext
+    lengthDisplay.innerText = passwordLength; //my own setup textcontent instead of innertext
     //h.w.
 
     //figure out later
