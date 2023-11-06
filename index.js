@@ -17,8 +17,9 @@ let password = "";
 let passwordLength = 10;
 let checkCount = 1;
 uppercaseCheck.checked = true;
-setIndicator("#ccc");
 handleSlider();
+setIndicator("#ccc");
+
 
 //setting strength color to gray
 
@@ -33,6 +34,10 @@ function handleSlider() {
     // inputSlider.addEventListener('input', (e) => {
     //     lengthDisplay.textContent = inputSlider.value;
     // })
+
+    const min = inputSlider.min;
+    const max = inputSlider.max;
+    inputSlider.style.backgroundSize = ((passwordLength - min) * 100 / (max - min)) + "% 100%";
 }
 
 //setting strength color
