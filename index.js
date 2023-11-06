@@ -11,6 +11,7 @@ const indicator = document.querySelector("[data-indicator]");
 const generateBtn = document.querySelector(".generateButton");
 const allCheckBox = document.querySelectorAll("input[type=checkbox]");
 const symbols = "!@#$%^&*()_-+=[]{}|;:,.<>?";
+const modalBox = document.querySelector(".modalHead");
 
 //initial initialisation we can apply 
 let password = "";
@@ -96,6 +97,7 @@ function calcStrength() {
     if (numbersCheck.checked) hasNum = true;
     if (symbolsCheck.checked) hasSym = true;
 
+
     if (hasUpper && hasLower && hasNum && password.length >= 8) {
         setIndicator("#0f0");
     }
@@ -104,10 +106,13 @@ function calcStrength() {
         (hasNum || hasSym) &&
         passwordLength >= 6
     ) {
-        setIndicator("#ff0");
+        setIndicator("#f7ef02");
+    }
+    else if (hasLower || hasUpper || hasNum || hasSys) {
+        setIndicator("#d10404");
     }
     else {
-        setIndicator("#00f");
+        setIndicator("#ccc");
     }
 }
 
@@ -182,7 +187,10 @@ generateBtn.addEventListener('click', () => {
     if (checkCount <= 0) {
         password = "";
         passwordDisplay.value = password;
+        setIndicator("#ccc");
         console.log("no result");
+        modalBox.classList.add("active");
+        //alert("Please select options to include in your password");
         return;
     }
     if (passwordLength < checkCount) {
