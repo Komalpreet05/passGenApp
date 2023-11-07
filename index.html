@@ -80,19 +80,25 @@
 
             <div>
               <img
+                id="modalImg"
                 src="images/multiply.png"
                 alt=""
-                height="10px"
-                width="10px"
+                height="15px"
+                width="15px"
                 onclick="closeModal()"
               />
             </div>
           </div>
+          <div class="modal-content">
+            <p>Please select password requirements to generate a password</p>
+          </div>
+          <button class="errorBtn" onclick="closeModal()">Ok</button>
         </div>
         <!-------overlay-->
         <!-- <div class="overlay overlayactive" onclick="closeModal()"></div> -->
       </div>
     </div>
+    <div class="overlay overlayactive" onclick="closeModal()"></div>
     <script src="index.js"></script>
   </body>
 </html>

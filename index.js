@@ -186,7 +186,7 @@ const overlay = document.querySelector(".overlay");
 
 function closeModal() {
     modalBox.classList.remove("active");
-
+    overlay.classList.remove("active");
 }
 
 function errorModal() {
@@ -200,6 +200,9 @@ generateBtn.addEventListener('click', () => {
         setIndicator("#ccc");
         console.log("no result");
         modalBox.classList.add("active");
+        overlay.classList.add("active");
+
+
         // overlay.classList.add("overlayactive");
         //alert("Please select options to include in your password");
         return;
