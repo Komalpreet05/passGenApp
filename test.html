@@ -3,12 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Password Generator</title>
-    <link rel="icon" type="image/x-icon" href="./images/favicon.png" />
+    <title>Document</title>
   </head>
   <body>
-    <!----top level wrapper-->
     <div id="wrapper">
       <div class="container">
         <h1 id="head1">Password Generator</h1>
@@ -75,24 +72,21 @@
         </div>
         <!------test modal-->
         <div class="modal">
-          <div class="modal-header">
-            <h1 class="modalHead">ERROR</h1>
-
-            <div>
-              <img
-                src="images/multiply.png"
-                alt=""
-                height="10px"
-                width="10px"
-                onclick="closeModal()"
-              />
-            </div>
+          <h1 class="modalHead">Sorry input please</h1>
+          <div>
+            <i onclick="closeModal()" class="fa-solid fa-xmark"></i>
+            <i class="fa-solid fa-cutlery"></i>
           </div>
         </div>
         <!-------overlay-->
         <!-- <div class="overlay overlayactive" onclick="closeModal()"></div> -->
       </div>
     </div>
+    <p>testing <i class="fa-solid fa-cutlery"></i></p>
+    <script
+      src="https://kit.fontawesome.com/a75c65983a.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="index.js"></script>
   </body>
 </html>

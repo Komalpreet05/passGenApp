@@ -11,7 +11,7 @@ const indicator = document.querySelector("[data-indicator]");
 const generateBtn = document.querySelector(".generateButton");
 const allCheckBox = document.querySelectorAll("input[type=checkbox]");
 const symbols = "!@#$%^&*()_-+=[]{}|;:,.<>?";
-const modalBox = document.querySelector(".modalHead");
+const modalBox = document.querySelector(".modal");
 
 //initial initialisation we can apply 
 let password = "";
@@ -180,8 +180,18 @@ function shufflePassword(array) {
     array.forEach((el) => str += el);
     return str;
 }
-//generate btn
 
+//generate btn
+const overlay = document.querySelector(".overlay");
+
+function closeModal() {
+    modalBox.classList.remove("active");
+
+}
+
+function errorModal() {
+
+}
 generateBtn.addEventListener('click', () => {
     //none checkboxes selected
     if (checkCount <= 0) {
@@ -190,6 +200,7 @@ generateBtn.addEventListener('click', () => {
         setIndicator("#ccc");
         console.log("no result");
         modalBox.classList.add("active");
+        // overlay.classList.add("overlayactive");
         //alert("Please select options to include in your password");
         return;
     }
