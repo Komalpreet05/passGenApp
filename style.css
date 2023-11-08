@@ -359,3 +359,15 @@ button.errorBtn:hover {
 #modalImg {
   cursor: pointer;
 }
+
+@media (max-width: 850px) {
+  .modal {
+    width: 70vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .modal {
+    width: 80vw;
+  }
+}
