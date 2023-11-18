@@ -38,7 +38,10 @@ function handleSlider() {
 
     const min = inputSlider.min;
     const max = inputSlider.max;
-    inputSlider.style.backgroundSize = ((passwordLength - min) * 100 / (max - min)) + "% 100%";
+    //inputSlider.style.backgroundSize = ((passwordLength - min) * 100 / (max - min)) + "% 100%";
+
+    //password formula regenerated
+    inputSlider.style.backgroundSize = (passwordLength * 100 / max) + "% 100%";
 }
 
 //setting strength color
