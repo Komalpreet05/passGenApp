@@ -134,6 +134,15 @@ async function copyContent() {
     }, 2000);
 }
 
+async function contentFail() {
+    console.log("test");
+    copyMsg.innerText = "No Text";
+    copyMsg.classList.add('active');
+    setTimeout(() => {
+        copyMsg.classList.remove("active");
+    }, 10000);
+}
+
 //event listeners
 
 inputSlider.addEventListener('input', (e) => {
@@ -147,8 +156,16 @@ copyBtn.addEventListener('click', () => {
     if (passwordDisplay.value) {
         copyContent();
     }
-})
+    else {
+        contentFail();
+    }
 
+})
+// copyBtn.addEventListener("click", () => {
+//     if (!passwordDisplay.value) {
+//         contentFail();
+//     }
+// })
 function handleCheckBoxChange() {
     checkCount = 0;
     allCheckBox.forEach((checkBox) => {

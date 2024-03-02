@@ -269,6 +269,7 @@ h1#head1 {
   position: relative;
 }
 .tooltip {
+  width: 100px;
   position: absolute;
   background-color: white;
   color: var(--new4);
